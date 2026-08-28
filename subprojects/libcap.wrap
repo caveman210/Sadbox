@@ -1,0 +1,14 @@
+[wrap-file]
+directory = libcap-2.78
+source_url = https://git.kernel.org/pub/scm/libs/libcap/libcap.git/snapshot/libcap-2.78.tar.gz
+source_filename = libcap-2.78.tar.gz
+source_hash = 856e742e331bb53176231e1eae3588ab044e5564c811df3138bd2f1c7b953682
+source_fallback_url = https://wrapdb.mesonbuild.com/v2/libcap_2.78-1/get_source/libcap-2.78.tar.gz
+patch_filename = libcap_2.78-1_patch.zip
+patch_url = https://wrapdb.mesonbuild.com/v2/libcap_2.78-1/get_patch
+patch_fallback_url = https://github.com/mesonbuild/wrapdb/releases/download/libcap_2.78-1/libcap_2.78-1_patch.zip
+patch_hash = 3d19e862591c1b4e4daa123d89b014070a1f5c3fd8bb05722f6b586af01a54e4
+wrapdb_version = 2.78-1
+
+[provide]
+dependency_names = libcap

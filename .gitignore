@@ -1,2 +1,4 @@
-Learning/
 flake.*
+build/
+subprojects/*/
+subprojects/.wraplock

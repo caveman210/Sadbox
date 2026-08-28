@@ -1,0 +1,203 @@
+[source]
+# Target shell executable to launch inside the sandbox
+target = "/bin/sh"
+
+[arguments]
+args.fd = ""
+argv0.value = ""
+
+[logging]
+level-prefix.set = false
+
+[unshare]
+unshare-all.set = true
+share-net.set = true
+
+[unshare-specific]
+unshare-user-try.set = false
+unshare-ipc.set = false
+unshare-net.set = false
+unshare-cgroup.set = false
+unshare-cgroup-try.set = false
+
+[unshare-specific.unshare-user]
+set = false
+uid = ""
+gid = ""
+
+[unshare-specific.unshare-pid]
+set = false
+pidns.fd = ""
+
+[unshare-specific.unshare-uts]
+set = false
+hostname = "sandbox"
+
+[userns]
+fd = ""
+userns2.fd = ""
+disable-userns.set = false
+assert-userns-disabled.set = false
+
+[chdir]
+set = true
+dir = "/Sandbox"
+
+[env_var]
+clearenv.set = true
+setenv.set = true
+unsetenv.set = false
+unsetenv.vars = []
+
+[env_var.setenv.variables]
+PATH = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/run/current-system/sw/bin"
+HOME = "/home/sandbox"
+TERM = "xterm-256color"
+SHELL = "/bin/sh"
+
+[lockfile]
+set = false
+dest = ""
+
+[syncfd]
+fd = ""
+
+[mounts]
+  [mounts.proc]
+  set = true
+  dest = "/proc"
+
+  [mounts.dev]
+  set = true
+  dest = "/dev"
+
+  [mounts.mqueue]
+  set = false
+  dest = ""
+
+  [mounts.dir]
+  set = false
+  destinations = []
+
+  [mounts.tmpfs]
+  set = true
+  destinations = [
+    "/tmp",
+    "/var",
+    "/run",
+    "/home/sandbox"
+  ]
+
+  [mounts.bind]
+  set = true
+  [mounts.bind.entries]
+  workspace = ["./Sandbox", "/Sandbox"]
+
+  [mounts.bind-try]
+  set = false
+  [mounts.bind-try.entries]
+
+  [mounts.dev-bind]
+  set = true
+  [mounts.dev-bind.entries]
+  dev_pts = ["/dev/pts", "/dev/pts"]
+
+  [mounts.dev-bind-try]
+  set = false
+  [mounts.dev-bind-try.entries]
+
+  [mounts.ro-bind]
+  set = true
+  [mounts.ro-bind.entries]
+  bin_dir   = ["/bin", "/bin"]
+  usr_dir   = ["/usr", "/usr"]
+  lib_dir   = ["/lib", "/lib"]
+  lib64_dir = ["/lib64", "/lib64"]
+
+  [mounts.ro-bind-try]
+  set = true
+  [mounts.ro-bind-try.entries]
+  passwd        = ["/etc/passwd", "/etc/passwd"]
+  group         = ["/etc/group", "/etc/group"]
+  resolv        = ["/etc/resolv.conf", "/etc/resolv.conf"]
+  hosts         = ["/etc/hosts", "/etc/hosts"]
+  nix_store     = ["/nix/store", "/nix/store"]
+  nix_var       = ["/nix/var", "/nix/var"]
+  usr_lib       = ["/usr/lib", "/usr/lib"]
+  usr_lib64     = ["/usr/lib64", "/usr/lib64"]
+
+  [mounts.bind-fd]
+  set = false
+  [mounts.bind-fd.entries]
+
+  [mounts.ro-bind-fd]
+  set = false
+  [mounts.ro-bind-fd.entries]
+
+  [mounts.remount-ro]
+  set = false
+  dest = ""
+
+  [mounts.symlink]
+  set = false
+  [mounts.symlink.links]
+
+[overlayfs]
+overlay-src.set = false
+overlay-src.path = ""
+
+overlay.set = false
+overlay.entries = []
+
+tmp-overlay.set = false
+tmp-overlay.destinations = []
+
+ro-overlay.set = false
+ro-overlay.destinations = []
+
+[files_and_data]
+file.set = false
+[files_and_data.file.entries]
+
+bind-data.set = false
+[files_and_data.bind-data.entries]
+
+ro-bind-data.set = false
+[files_and_data.ro-bind-data.entries]
+
+perms.set = false
+perms.octal = "0755"
+
+size.set = false
+size.bytes = 0
+
+chmod.set = false
+[files_and_data.chmod.entries]
+
+[selinux]
+exec-label.value = ""
+file-label.value = ""
+
+[seccomp]
+seccomp.fd = ""
+
+add-seccomp-fd.set = false
+add-seccomp-fd.fds = []
+
+[synchronization]
+block-fd.value = ""
+userns-block-fd.value = ""
+info-fd.value = ""
+json-status-fd.value = ""
+
+[process]
+new-session.set = true
+die-with-parent.set = true
+as-pid-1.set = false
+
+[capabilities]
+cap-add.set = false
+cap-add.caps = []
+
+cap-drop.set = false
+cap-drop.caps = []

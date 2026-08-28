@@ -1,5 +1,7 @@
 # Sandy
 
+### ALL IT CAN DO IS RUN bwrap and call it a day. Don't expect it to work right now. It doesn't.
+
 Weird name.
 Sandy basically came from the name **Sandbox**, but it seems rather too technical.
 Hence, Sandy.

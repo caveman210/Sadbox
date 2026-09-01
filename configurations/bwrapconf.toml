@@ -1,5 +1,4 @@
 [source]
-# Target shell executable to launch inside the sandbox
 target = "/bin/sh"
 
 [arguments]
@@ -50,10 +49,10 @@ unsetenv.set = false
 unsetenv.vars = []
 
 [env_var.setenv.variables]
-PATH = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/run/current-system/sw/bin"
+PATH = "/run/current-system/sw/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 HOME = "/home/sandbox"
 TERM = "xterm-256color"
-SHELL = "/bin/sh"
+TMPDIR = "/Sandbox/tmp"
 
 [lockfile]
 set = false
@@ -84,7 +83,6 @@ fd = ""
   destinations = [
     "/tmp",
     "/var",
-    "/run",
     "/home/sandbox"
   ]
 
@@ -109,10 +107,7 @@ fd = ""
   [mounts.ro-bind]
   set = true
   [mounts.ro-bind.entries]
-  bin_dir   = ["/bin", "/bin"]
-  usr_dir   = ["/usr", "/usr"]
-  lib_dir   = ["/lib", "/lib"]
-  lib64_dir = ["/lib64", "/lib64"]
+  config = ["./", "/configurations"]
 
   [mounts.ro-bind-try]
   set = true
@@ -123,8 +118,13 @@ fd = ""
   hosts         = ["/etc/hosts", "/etc/hosts"]
   nix_store     = ["/nix/store", "/nix/store"]
   nix_var       = ["/nix/var", "/nix/var"]
+  nix_sw        = ["/run/current-system/sw", "/run/current-system/sw"]
   usr_lib       = ["/usr/lib", "/usr/lib"]
   usr_lib64     = ["/usr/lib64", "/usr/lib64"]
+  bin_dir       = ["/bin", "/bin"]
+  usr_dir       = ["/usr", "/usr"]
+  lib_dir       = ["/lib", "/lib"]
+  lib64_dir     = ["/lib64", "/lib64"]
 
   [mounts.bind-fd]
   set = false

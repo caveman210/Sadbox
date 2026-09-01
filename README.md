@@ -1,7 +1,5 @@
 # Sadbox
 
-### ALL IT CAN DO IS run bwrap and call it a day. Don't expect it to work right now. It doesn't.
-
 Weird name. Yes I know.  
 All programs and viruses (or virae?) can go to container purgatory. Or whatever this is (don't judge me)  
 
@@ -12,3 +10,9 @@ There are AI files and AI contributions here and there, cause I am a dumb guy, p
 #### Credits to the idea behind: [Lazypluto](https://github.com/lazypluto)  
 He has his own finished implementation of this in Rust, so its surely more memory safe than mine.
 I just made it cause I wanted to learn more on whatever this is. Also I just hope to keep my data safe(r?).
+
+So I just retrofit my own solution with a bit of AI here and there.  
+
+As of now, whatever this is just starts up an almost isolated shell, and then it sort of works?
+No dependencies and no coreutil packages or stuff - just exit works now ig (So the idea works.)  
+Now I smh need to put nix in it, and it will work!
